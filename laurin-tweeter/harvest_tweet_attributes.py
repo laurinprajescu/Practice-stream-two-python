@@ -2,6 +2,7 @@ import json
 import tweepy
 from tweepy import OAuthHandler
 from collections import Counter
+from prettytable import PrettyTable
 
 CONSUMER_KEY = 'Ll01SzXcptfheD9hTiwZVv0go'
 CONSUMER_SECRET = 'y6lN2sfhMxYeELEoIU1CTfLlOvlAKFHUuy7ro9z0swmYanl1cK'
@@ -33,7 +34,11 @@ words = [ word
                         for text in status_texts
                                 for word in text.split()]
 
-for entry in [ screen_names, hashtags, words]:
-    counter = Counter(entry)
-    print counter.most_common()[:10] #top 10 results
-    print
+for label, data in (('Text', status_texts),
+                    ('Screnn Name', screen_names),
+                    ('Words', words)):
+    table = PrettyTable(field_names=[label, 'Count'])
+    counter = Counter(data)
+    [ table.add_row(entry) for entry in counter.most_common()[:10] ]
+    table.align[label], table.align['Count'] = '1', 'r' #align the columns
+    print table
