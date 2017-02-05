@@ -11,11 +11,6 @@ web_stats = {'Day':[1,2,3,4,5,6],
 df = pandas.DataFrame(web_stats)
 df.set_index('Day', inplace=True)
 
-print df.head()
-print df.tail()
-print df.tail(2)
-
-print df['Visitors']
-
-print df.Visitors # as an object
+df['Visitors'].plot()
+plt.show()
 
