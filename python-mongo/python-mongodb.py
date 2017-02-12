@@ -14,8 +14,8 @@ coll = db.my_collection
 coll.drop()  # remove the collection
 docs = [{"name": "Code", "surname": "Institute", "twitter": "@codersinstitute"},
        {"name": "Stephen", "surname": "Fry", "twitter": "@stephenfry"},
-       {"name": "Code", "surname": "Institute", "twitter": "@codersinstitute"}]
+       {"name": "Stephen", "surname": "Dedalus", "twitter": "@stephend"}]
 coll.insert_many(docs)
-results = coll.find()
+results = coll.find({"name": "Stephen"})
 for doc in results:
    print doc
