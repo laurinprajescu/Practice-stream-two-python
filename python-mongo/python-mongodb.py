@@ -18,4 +18,4 @@ docs = [{"name": "Code", "surname": "Institute", "twitter": "@codersinstitute"},
 coll.insert_many(docs)
 results = coll.find({"name": "Stephen"})
 for doc in results:
-   print doc
+   print doc ###
