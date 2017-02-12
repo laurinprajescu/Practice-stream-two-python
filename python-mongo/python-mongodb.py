@@ -11,8 +11,8 @@ def mongo_connect():
 conn = mongo_connect()
 db = conn['twitter_stream']
 coll = db.my_collection
-doc = {"name": "Code", "surname": "Institute", "twitter": "@codersinstitute"}
-coll.insert(doc)
-result = coll.find_one()
-print result
-# {u'twitter': u'@codersinstitute', u'_id': ObjectId('5629264db1bae125ac446ba5'), u'surname': u'Institute', u'name': u'Code'}
+docs = [{"name": "Henry", "surname": "Moore", "twitter": "@henrymoore"},
+       {"name": "Stephen", "surname": "Fry", "twitter": "@stephenfry"}]
+coll.insert_many(docs)
+results = coll.find()
+print results #<pymongo.cursor.Cursor object at 0x02909C90>
