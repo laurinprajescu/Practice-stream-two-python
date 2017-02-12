@@ -17,5 +17,5 @@ docs = [{"name": "Code", "surname": "Institute", "twitter": "@codersinstitute"},
        {"name": "Stephen", "surname": "Dedalus", "twitter": "@stephend"}]
 coll.insert_many(docs)
 results = coll.find({"name": "Stephen"})
-for doc in results:
-   print doc ###
+print results.count()  # 2
+print coll.count()  # 3
