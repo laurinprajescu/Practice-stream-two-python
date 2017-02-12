@@ -11,4 +11,4 @@ def mongo_connect():
 conn = mongo_connect()
 db = conn['twitter_stream']
 coll = db.my_collection
-print db.collection_names()
+print conn.database_names()  # [u'local', u'test']
