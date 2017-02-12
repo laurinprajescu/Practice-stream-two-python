@@ -11,8 +11,11 @@ def mongo_connect():
 conn = mongo_connect()
 db = conn['twitter_stream']
 coll = db.my_collection
-docs = [{"name": "Henry", "surname": "Moore", "twitter": "@henrymoore"},
-       {"name": "Stephen", "surname": "Fry", "twitter": "@stephenfry"}]
+coll.drop()  # remove the collection
+docs = [{"name": "Code", "surname": "Institute", "twitter": "@codersinstitute"},
+       {"name": "Stephen", "surname": "Fry", "twitter": "@stephenfry"},
+       {"name": "Code", "surname": "Institute", "twitter": "@codersinstitute"}]
 coll.insert_many(docs)
 results = coll.find()
-print results #<pymongo.cursor.Cursor object at 0x02909C90>
+for doc in results:
+   print doc
