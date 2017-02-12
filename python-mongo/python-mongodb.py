@@ -11,4 +11,8 @@ def mongo_connect():
 conn = mongo_connect()
 db = conn['twitter_stream']
 coll = db.my_collection
-print conn.database_names()  # [u'local', u'test']
+doc = {"name": "Code", "surname": "Institute", "twitter": "@codersinstitute"}
+coll.insert(doc)
+result = coll.find_one()
+print result
+# {u'twitter': u'@codersinstitute', u'_id': ObjectId('5629264db1bae125ac446ba5'), u'surname': u'Institute', u'name': u'Code'}
